@@ -1,3 +1,7 @@
+html {
+    scroll-behavior: smooth;
+}
+
 .story_date {
     width: 200px;
     padding: 10px 30px;

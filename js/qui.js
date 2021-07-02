@@ -53,7 +53,7 @@ function addTeam () {
 
     for (let i = 0; i < 3; i++) {
         $('#team_row_0').append(`
-            <img id="team_mate_${i}" src="${teammates[i].src}" alt="Photo de ${teammates[i].name}" class="w-25 team_mate">
+            <img id="team_mate_${i}" src="${teammates[i].src}" alt="Photo de ${teammates[i].name}" class="w-25 team_mate"></a>
         `)
     }
 
@@ -62,17 +62,26 @@ function addTeam () {
             <img src="${teammates[i].src}" alt="Photo de ${teammates[i].name}" class="w-25 team_mate">
         `)
     }
+    
+    let team_mates = document.querySelectorAll('.team_mate');
 
-    $('.team_mate').each( function () {
-        $(this).mouseenter( function () {
-            $('.team_mate').addClass('is_less_visible')
-            $(this).removeClass('is_less_visible').addClass('is_visible')
+    for (let i = 0; i < team_mates.length; i++) {
+
+        team_mates[i].addEventListener( 'mouseenter', () => {
+            $('.team_mate').addClass('is_less_visible');
+            $(team_mates[i]).removeClass('is_less_visible').addClass('is_visible')
         })
-        $(this).mouseleave( function () {
-            $('.team_mate').removeClass('is_less_visible')
-            $(this).removeClass('is_visible')
+
+        team_mates[i].addEventListener( 'mouseleave', () => {
+            $('.team_mate').removeClass('is_less_visible');
+            $(team_mates[i]).removeClass('is_visible')
         })
-    })    
+
+        team_mates[i].addEventListener( 'click', () => {
+            window.location.href=`#teammate_${i}`;
+        })
+            
+    }
 }
 
 function addTeamMates () {
