@@ -43,25 +43,58 @@ function addMethods () {
     }
 }
 
+function addTeam () {
+    
+    for (let i = 0; i < 2; i++) {
+        $('#block_team_group').append(`
+            <div id="team_row_${i}" class="d-flex flex-row justify-content-center col-12 col-lg-8 mx-auto"></div>
+        `);
+    }
+
+    for (let i = 0; i < 3; i++) {
+        $('#team_row_0').append(`
+            <img id="team_mate_${i}" src="${teammates[i].src}" alt="Photo de ${teammates[i].name}" class="w-25 team_mate">
+        `)
+    }
+
+    for (let i = 3; i < teammates.length; i++) {
+        $('#team_row_1').append(`
+            <img src="${teammates[i].src}" alt="Photo de ${teammates[i].name}" class="w-25 team_mate">
+        `)
+    }
+
+    $('.team_mate').each( function () {
+        $(this).mouseenter( function () {
+            $('.team_mate').addClass('is_less_visible')
+            $(this).removeClass('is_less_visible').addClass('is_visible')
+        })
+        $(this).mouseleave( function () {
+            $('.team_mate').removeClass('is_less_visible')
+            $(this).removeClass('is_visible')
+        })
+    })    
+}
+
 function addTeamMates () {
-    for (let teammate of teammates) {
+    for (let i = 0; i < teammates.length; i++) {
         $('#block_team_individual').append(`
             <div class="col-12 col-lg-10 offset-lg-1 d-flex flex-column flex-lg-row my-3">
-                <div class="col-12 col-lg-2">
-                    <img src="${teammate.src}" class="w-100 d-block mt-5">
+                <div class="col-6 col-lg-2 mx-auto">
+                    <img id="teammate_${i}" src="${teammates[i].src}" alt="Photo de ${teammates[i].name}" class="w-100">
                 </div>
                 <div class="col-12 col-lg-8 text-center">
-                    <p class="h2">${teammate.name}</p>
-                    <p class="h3">${teammate.job}</p>
-                    <p>${teammate.description}</p>
+                    <p class="h2">${teammates[i].name}</p>
+                    <p class="h3">${teammates[i].job}</p>
+                    <p>${teammates[i].description}</p>
                 </div>
             </div>
         `)
     }
-}
 
+}
 
 addMilestones();
 addStories();
 addMethods();
+addTeam();
 addTeamMates();
