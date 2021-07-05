@@ -87,11 +87,11 @@ function addTeam () {
 function addTeamMates () {
     for (let i = 0; i < teammates.length; i++) {
         $('#block_team_individual').append(`
-            <div class="col-12 col-lg-10 offset-lg-1 d-flex flex-column flex-lg-row my-3">
-                <div class="col-6 col-lg-2 mx-auto">
-                    <img id="teammate_${i}" src="${teammates[i].src}" alt="Photo de ${teammates[i].name}" class="w-100">
+            <div id="teammate_${i}" class="col-12 col-lg-10 offset-lg-1 d-flex flex-column flex-lg-row my-3 pt-5">
+                <div class="col-6 col-lg-2 mx-auto pt-5">
+                    <img src="${teammates[i].src}" alt="Photo de ${teammates[i].name}" class="w-100 pt-5">
                 </div>
-                <div class="col-12 col-lg-8 text-center">
+                <div class="col-12 col-lg-8 text-center pt-5">
                     <p class="h2">${teammates[i].name}</p>
                     <p class="h3">${teammates[i].job}</p>
                     <p>${teammates[i].description}</p>
